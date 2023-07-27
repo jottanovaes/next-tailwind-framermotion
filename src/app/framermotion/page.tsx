@@ -3,32 +3,22 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface CardProps {
-  href: string
   imgSrc: string
   layoutId: string
 }
-function Card({ href, imgSrc, layoutId }: CardProps) {
+function Card({ imgSrc, layoutId }: CardProps) {
   return (
-    <Link href={href}>
-      <div className="relative h-20 md:h-40 bg-gray-200 rounded-xl hover:bg-gray-50 transition">
-        <motion.img src={imgSrc} className="h-full w-full" layoutId={layoutId} />
-      </div>
-    </Link>
+    <motion.img src={imgSrc} layoutId={layoutId} />
   )
 }
 
-export default function Home() {
+export default function Framermotion() {
   return (
-    <>
-      <h1 className="text-4xl mt-10 leading-none font-extrabold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl lg:mt-24">
-        Construa sites modernos com agilidade sem precisar sair do HTML.
-      </h1>
-
-      <div className="grid w-full grid-cols-1 grid-rows-3 mt-10 md:mt-24 gap-4 md:grid-cols-3 md:grid-rows-1">
-        <Card href="/nextjs" imgSrc="/img/nextjs.svg" layoutId="nextjs-logo" />
-        <Card href="/tailwind" imgSrc="/img/tailwind.svg" layoutId="tailwind-logo" />
-        <Card href="/framermotion" imgSrc="/img/framermotion.svg" layoutId="framermotion-logo" />
-      </div>
-    </>
+    <div className="flex flex-col items-center">
+      <Card imgSrc="/img/framermotion.svg" layoutId="framermotion-logo" />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}>
+        <Link href="/" className="bg-gray-900 text-gray-50 px-6 py-3 text-lg font-semibold rounded-xl hover:bg-gray-700 transition">Voltar para a Home</Link>
+      </motion.div>
+    </div >
   );
 }

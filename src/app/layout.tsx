@@ -2,6 +2,8 @@ import Header from '@/components/Header'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { AnimateSharedLayout } from 'framer-motion'
+import { AnimatedWrapper } from '@/components/AnimatedWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} max-w-5xl  px-4 sm:px-6 md:px-8 mx-auto`}>
-        <Header />
-        {children}
-        </body>
+        <AnimatedWrapper>
+          <Header />
+          {children}
+        </AnimatedWrapper>
+      </body>
     </html>
   )
 }
